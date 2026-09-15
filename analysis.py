@@ -51,7 +51,7 @@ for row in death_data[:10]:
     print(row["Leading Cause"])
     
 # 6. Print the first 10 rows of three columns
-for oew in death_data[:10]:
+for row in death_data[:10]:
     print(
         row["Year"],
         row["Leading Cause"],
