@@ -29,7 +29,7 @@ def clean_race_ethnicity(value):
     if value == "White Non-Hispanic":
         return "Non-Hispanic White"
     if value == "Black Non-Hispanic":
-        return "Non-Hispanic Black
+        return "Non-Hispanic Black"
     return value
 
 death_data = load_csv(FILEPATH)
