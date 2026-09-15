@@ -69,7 +69,7 @@ male_deaths = 0
 
 for row in death_data:
     sex = clean_sex(row["Sex"])
-    death = clean_deaths(row["Deaths"])
+    deaths = clean_deaths(row["Deaths"])
     
     if sex == "Female":
         female_deaths += deaths
