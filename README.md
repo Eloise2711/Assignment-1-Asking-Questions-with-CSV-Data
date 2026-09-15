@@ -6,16 +6,38 @@ It's a great example of a public dataset that supports insightful population-lev
 
 ## Three Data Questions
 
-# Question: Which leading cause has the highest total number of deaths?
-#cause_total = Counter()
-#for row in death_data:
-#    if row["Primary Fur Color"] == "Gray":
-#       count += 1
-#print(count)
-#output: 2473
+# Question 1: Which leading cause has the highest total number of deaths?
+
+```python
+cause_totals = {}
+
+for row in death_data:
+    cause = row["Leading Cause"]
+    deaths = clean_deaths(row["Deaths"])
+
+    if cause not in cause_totals:
+        cause_totals[cause] = 0
+
+    cause_totals[cause] += deaths
+
+top_cause = ""
+top_cause_deaths = 0
+
+for cause in cause_totals:
+    if cause_totals[cause] > top_cause_deaths:
+        top_cause = cause
+        top_cause_deaths = cause_totals[cause]
+
+print(top_cause + ":", top_cause_deaths)
+```
+
+Output:
+
+```text
+Diseases of Heart (I00-I09, I11, I13, I20-I51): 272717
+```
 
 Why the data structure supports this question:
-This works because the dataset is tabular: each row is one squirrel sighting, 
-and the Primary Fur Color column stores a categorical label for fur color. 
-Counting the rows where that column equals "Gray" gives the total number of gray squirrel
-sightings.
+This works because the dataset is tabular and each row includes a Leading Cause value and a Deaths value. By grouping rows by the Leading Cause column and adding the Death values, the code can compare total death across causes.
+
+# 
